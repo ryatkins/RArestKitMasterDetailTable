@@ -8,19 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import <RestKit/RestKit.h>
+#import "DetailTableViewController.h"
 
-@interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, RKObjectLoaderDelegate>
+@interface ViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, RKObjectLoaderDelegate>
 {
-    
-    UITableView *_tableView;
+
     NSArray* _models;
-    NSArray* _categories;
+    NSArray* categories;
     
 //    IBOutlet UIButton *reloadTableView;
     
 }
 
-@property (nonatomic, retain) NSArray* _categories;
+@property (nonatomic, retain) NSArray* categories;
+@property (strong, nonatomic) DetailTableViewController *detailTableViewController;
 
 - (void)reloadButtonWasPressed;
 

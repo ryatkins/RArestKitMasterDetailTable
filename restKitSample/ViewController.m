@@ -17,12 +17,11 @@
 
 @implementation ViewController
 
-@synthesize _categories;
+@synthesize categories = _categories;
+@synthesize detailTableViewController = _detailTableViewController;
 
 - (void)dealloc {
-    [_tableView release];
     [_categories release];
-   
     [super dealloc];
 }
 
@@ -31,13 +30,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 480-64) style:UITableViewStylePlain];
-    _tableView.dataSource = self;
-    _tableView.delegate = self;
-    [self.view addSubview:_tableView];
       
-   [self loadContact];  
+    [self loadContact];  
 }
 
 - (void)viewDidUnload
@@ -64,6 +58,29 @@
 // RKObjectLoaderDelegate methods
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects {
+    
+    self.categories = [objects retain];
+    
+    
+     Category* category = ((Category*)[_categories objectAtIndex:0]);
+     NSArray* models = [category.models allObjects];
+
+     for (Model* model in models) {
+         NSLog(@"model.id | model.title: %@ | %@", model.modelID, model.title);
+     }
+     NSLog(@"done");
+
+
+    Category* category2 = ((Category*)[_categories objectAtIndex:1]);
+    NSArray* models2 = [category2.models allObjects];
+    
+    for (Model* model2 in models2) {
+        NSLog(@"model.id | model.title: %@ | %@", model2.modelID, model2.title);
+    }
+    NSLog(@"done");
+
+    
+    
     [self loadObjectsFromDataStore];   
     
 }
@@ -71,7 +88,7 @@
 - (void) loadObjectsFromDataStore {
     NSFetchRequest* fetchRequest = [Category fetchRequest];
     //sort etc
-    _categories = [[Category objectsWithFetchRequest:fetchRequest] retain] ;
+    self.categories = [[Category objectsWithFetchRequest:fetchRequest] retain] ;
 
     
 //    Category* category = ((Category*)[_categories objectAtIndex:0]);
@@ -82,7 +99,7 @@
 //    }
 //    NSLog(@"done");
     
-    [_tableView reloadData];
+    [self.tableView reloadData];
 
 }
 
@@ -95,7 +112,7 @@
     // Load the object model via RestKit
 //    [self loadData];
 
- [_tableView reloadData];
+    [self.tableView reloadData];
 
 }
 
@@ -103,7 +120,7 @@
 #pragma mark UITableViewDataSource methods
 
 - (NSInteger)tableView:(UITableView *)table numberOfRowsInSection:(NSInteger)section {
-    return [_categories count];
+    return [self.categories count];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -121,27 +138,34 @@
     if (nil == cell) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier] autorelease];
         cell.textLabel.font = [UIFont systemFontOfSize:14];
-        cell.textLabel.numberOfLines = 0;
+        //cell.textLabel.numberOfLines = 0;
         cell.textLabel.backgroundColor = [UIColor clearColor];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         //cell.contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"listbg.png"]];
     }
     
-    Category* category = [_categories objectAtIndex:indexPath.row];
+    Category* category = [self.categories objectAtIndex:indexPath.row];
     cell.textLabel.text = category.title;
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
+    if (!self.detailTableViewController) {
+        self.detailTableViewController = [[[DetailTableViewController alloc] initWithNibName:@"DetailTableViewController" bundle:nil] autorelease];
+    }
     
+    Category* category = [self.categories objectAtIndex:indexPath.row];
+    self.detailTableViewController.category = category;
+    self.detailTableViewController.title = NSLocalizedString(category.title, category.title);
+
+    [self.navigationController pushViewController:self.detailTableViewController animated:YES];
+
+    [self.detailTableViewController.tableView reloadData];
+    
+    
+    [category release];    
 }
-
-
-
-
-
-
-
 
 
 @end

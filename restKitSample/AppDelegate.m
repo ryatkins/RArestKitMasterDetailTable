@@ -18,12 +18,13 @@
 @implementation AppDelegate
 
 @synthesize window = _window;
-@synthesize viewController = _viewController;
+@synthesize navigationController = _navigationController;
+//@synthesize viewController = _viewController;
 
 - (void)dealloc
 {
     [_window release];
-    [_viewController release];
+    [_navigationController release];
     [super dealloc];
 }
 
@@ -50,7 +51,7 @@
     [modelMapping mapKeyPath:@"title" toAttribute:@"title"];
     [modelMapping mapKeyPath:@"image" toAttribute:@"image"];
    // [modelMapping mapKeyPath:@"assigned_category_id" toAttribute:@"assignedCategoryID"];    
-//    [objectManager.mappingProvider setMapping:modelMapping forKeyPath:@"models"];
+   // [objectManager.mappingProvider setMapping:modelMapping forKeyPath:@"models"];
 
     
     // MAPPING - Category
@@ -67,10 +68,7 @@
 //    [modelMapping connectRelationship:@"assignedCategory" withObjectForPrimaryKeyAttribute:@"assignedCategoryID"];
 ////    
 
-    
-    
-
-  // [objectManager.mappingProvider setObjectMapping:categoryMapping forResourcePathPattern:@"json.php"];
+    // [objectManager.mappingProvider setObjectMapping:categoryMapping forResourcePathPattern:@"json.php"];
 
 
     
@@ -79,15 +77,18 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
-
     [self restKitSetup];
     
-    
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    // Override point for customization after application launch.
-    self.viewController = [[[ViewController alloc] initWithNibName:@"ViewController" bundle:nil] autorelease];
-    self.window.rootViewController = self.viewController;
+
+    ViewController *viewController = [[[ViewController alloc] initWithNibName:@"ViewController" bundle:nil] autorelease];
+//    self.viewController = viewController;
+    
+    viewController.title = NSLocalizedString(@"Models", @"Models");
+
+    self.navigationController = [[[UINavigationController alloc] initWithRootViewController:viewController] autorelease];
+    self.window.rootViewController = self.navigationController;
+
     [self.window makeKeyAndVisible];
     return YES;
 }

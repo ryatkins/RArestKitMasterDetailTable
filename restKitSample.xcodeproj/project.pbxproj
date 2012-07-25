@@ -23,6 +23,8 @@
 		9429390115B88FDA004BC81E /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9429390015B88FDA004BC81E /* libxml2.dylib */; };
 		9429390315B88FE0004BC81E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9429390215B88FE0004BC81E /* QuartzCore.framework */; };
 		9429390415B88FEA004BC81E /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 942938EA15B88D5D004BC81E /* libRestKit.a */; };
+		943FEE9615C07C530089776F /* DetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 943FEE9415C07C530089776F /* DetailTableViewController.m */; };
+		943FEE9715C07C530089776F /* DetailTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 943FEE9515C07C530089776F /* DetailTableViewController.xib */; };
 		9474E85B15B99C6B00F37D25 /* RKData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9474E85915B99C6B00F37D25 /* RKData.xcdatamodeld */; };
 		9474E86315B9A1FD00F37D25 /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 9474E86215B9A1FD00F37D25 /* Category.m */; };
 		9474E87015B9A8B000F37D25 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 9474E86F15B9A8B000F37D25 /* Model.m */; };
@@ -95,6 +97,9 @@
 		942938FE15B88FD2004BC81E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		9429390015B88FDA004BC81E /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		9429390215B88FE0004BC81E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		943FEE9315C07C530089776F /* DetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailTableViewController.h; sourceTree = "<group>"; };
+		943FEE9415C07C530089776F /* DetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailTableViewController.m; sourceTree = "<group>"; };
+		943FEE9515C07C530089776F /* DetailTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailTableViewController.xib; sourceTree = "<group>"; };
 		9474E85A15B99C6B00F37D25 /* RKData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RKData.xcdatamodel; sourceTree = "<group>"; };
 		9474E86115B9A1FD00F37D25 /* Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Category.h; sourceTree = "<group>"; };
 		9474E86215B9A1FD00F37D25 /* Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Category.m; sourceTree = "<group>"; };
@@ -167,6 +172,9 @@
 				942938CF15B88D04004BC81E /* ViewController.h */,
 				942938D015B88D04004BC81E /* ViewController.m */,
 				942938D215B88D04004BC81E /* ViewController.xib */,
+				943FEE9315C07C530089776F /* DetailTableViewController.h */,
+				943FEE9415C07C530089776F /* DetailTableViewController.m */,
+				943FEE9515C07C530089776F /* DetailTableViewController.xib */,
 				942938C415B88D04004BC81E /* Supporting Files */,
 				9474E86115B9A1FD00F37D25 /* Category.h */,
 				9474E86215B9A1FD00F37D25 /* Category.m */,
@@ -298,6 +306,7 @@
 			files = (
 				942938C815B88D04004BC81E /* InfoPlist.strings in Resources */,
 				942938D415B88D04004BC81E /* ViewController.xib in Resources */,
+				943FEE9715C07C530089776F /* DetailTableViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,6 +323,7 @@
 				9474E85B15B99C6B00F37D25 /* RKData.xcdatamodeld in Sources */,
 				9474E86315B9A1FD00F37D25 /* Category.m in Sources */,
 				9474E87015B9A8B000F37D25 /* Model.m in Sources */,
+				943FEE9615C07C530089776F /* DetailTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
