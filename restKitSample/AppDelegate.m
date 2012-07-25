@@ -9,6 +9,11 @@
 #import "AppDelegate.h"
 
 #import "ViewController.h"
+#import <RestKit/RestKit.h>
+#import <RestKit/CoreData.h>
+#import "Model.h"
+#import "Category.h"
+
 
 @implementation AppDelegate
 
@@ -22,8 +27,63 @@
     [super dealloc];
 }
 
+- (void)restKitSetup
+{
+    
+//    RKLogInitialize();
+//    RKLogConfigureFromEnvironment();
+
+    
+    RKObjectManager* objectManager = [RKObjectManager objectManagerWithBaseURLString:@"http://ionreality.com/"];
+
+    // Core Data store
+    RKManagedObjectStore* objectStore = [RKManagedObjectStore objectStoreWithStoreFilename:@"RKData.sqlite"];
+    objectManager.objectStore = objectStore; 
+    
+    // Activity indicator
+    objectManager.client.requestQueue.showsNetworkActivityIndicatorWhenBusy = YES;
+    
+    // MAPPING - Model
+    RKManagedObjectMapping *modelMapping = [RKManagedObjectMapping mappingForClass:[Model class] inManagedObjectStore:objectManager.objectStore];
+    modelMapping.primaryKeyAttribute = @"modelID"; 
+    [modelMapping mapKeyPath:@"id" toAttribute:@"modelID"];
+    [modelMapping mapKeyPath:@"title" toAttribute:@"title"];
+    [modelMapping mapKeyPath:@"image" toAttribute:@"image"];
+   // [modelMapping mapKeyPath:@"assigned_category_id" toAttribute:@"assignedCategoryID"];    
+//    [objectManager.mappingProvider setMapping:modelMapping forKeyPath:@"models"];
+
+    
+    // MAPPING - Category
+    RKManagedObjectMapping *categoryMapping = [RKManagedObjectMapping mappingForClass:[Category class] inManagedObjectStore:objectManager.objectStore];
+    categoryMapping.primaryKeyAttribute = @"categoryID";  
+    [categoryMapping mapKeyPath:@"id" toAttribute:@"categoryID"];
+    [categoryMapping mapKeyPath:@"title" toAttribute:@"title"];
+    [categoryMapping mapKeyPath:@"image" toAttribute:@"image"];
+    [categoryMapping mapRelationship:@"models" withMapping:modelMapping];
+    [objectManager.mappingProvider setMapping:categoryMapping forKeyPath:@"category"];
+    
+    // Hydrate the assignedCategory association via primary key
+//    [modelMapping hasOne:@"assignedCategory" withMapping:categoryMapping];
+//    [modelMapping connectRelationship:@"assignedCategory" withObjectForPrimaryKeyAttribute:@"assignedCategoryID"];
+////    
+
+    
+    
+
+  // [objectManager.mappingProvider setObjectMapping:categoryMapping forResourcePathPattern:@"json.php"];
+
+
+    
+}
+
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+
+    [self restKitSetup];
+    
+    
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
     self.viewController = [[[ViewController alloc] initWithNibName:@"ViewController" bundle:nil] autorelease];

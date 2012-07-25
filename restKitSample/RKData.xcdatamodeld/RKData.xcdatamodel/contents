@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11E53" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Category" representedClassName="Category">
+        <attribute name="categoryID" optional="YES" attributeType="Integer 16" defaultValueString="0"/>
+        <attribute name="image" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="models" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Model" inverseName="category" inverseEntity="Model"/>
+    </entity>
+    <entity name="Model" representedClassName="Model">
+        <attribute name="assignedCategoryID" optional="YES" attributeType="Integer 16" defaultValueString="0"/>
+        <attribute name="image" optional="YES" attributeType="String"/>
+        <attribute name="modelID" optional="YES" attributeType="Integer 16" defaultValueString="0"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="category" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="models" inverseEntity="Category" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Category" positionX="160" positionY="192" width="128" height="105"/>
+        <element name="Model" positionX="160" positionY="192" width="128" height="120"/>
+    </elements>
+</model>
