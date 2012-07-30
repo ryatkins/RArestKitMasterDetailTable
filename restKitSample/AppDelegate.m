@@ -33,8 +33,9 @@
     
 //    RKLogInitialize();
 //    RKLogConfigureFromEnvironment();
-
     
+    
+        
     RKObjectManager* objectManager = [RKObjectManager objectManagerWithBaseURLString:@"http://ionreality.com/"];
 
     // Core Data store
@@ -45,23 +46,54 @@
     objectManager.client.requestQueue.showsNetworkActivityIndicatorWhenBusy = YES;
     
     // MAPPING - Model
-    RKManagedObjectMapping *modelMapping = [RKManagedObjectMapping mappingForClass:[Model class] inManagedObjectStore:objectManager.objectStore];
+//    RKManagedObjectMapping *modelMapping = [RKManagedObjectMapping mappingForClass:[Model class] inManagedObjectStore:objectManager.objectStore];
+    
+    
+   RKManagedObjectMapping* modelMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Model"                                                                       inManagedObjectStore:objectManager.objectStore];
+    
     modelMapping.primaryKeyAttribute = @"modelID"; 
     [modelMapping mapKeyPath:@"id" toAttribute:@"modelID"];
     [modelMapping mapKeyPath:@"title" toAttribute:@"title"];
     [modelMapping mapKeyPath:@"image" toAttribute:@"image"];
-   // [modelMapping mapKeyPath:@"assigned_category_id" toAttribute:@"assignedCategoryID"];    
-   // [objectManager.mappingProvider setMapping:modelMapping forKeyPath:@"models"];
 
+//    [objectManager.mappingProvider setMapping:modelMapping forKeyPath:@"models"];
+    
+    [objectManager.mappingProvider registerMapping:modelMapping withRootKeyPath:@"model"];
+
+
+    [objectManager.mappingProvider setObjectMapping:modelMapping forResourcePathPattern:@"json.php" withFetchRequestBlock:^NSFetchRequest *(NSString *resourcePath){
+        //        NSFetchRequest *fetchRequest = [Category fetchRequest];
+        //        NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"created" ascending:NO];
+        //        [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+        //        return fetchRequest;
+        
+        return [Model fetchRequest];
+        
+    }];
+    
     
     // MAPPING - Category
-    RKManagedObjectMapping *categoryMapping = [RKManagedObjectMapping mappingForClass:[Category class] inManagedObjectStore:objectManager.objectStore];
+//    RKManagedObjectMapping *categoryMapping = [RKManagedObjectMapping mappingForClass:[Category class] inManagedObjectStore:objectManager.objectStore];
+    
+    
+    RKManagedObjectMapping* categoryMapping = [RKManagedObjectMapping mappingForEntityWithName:@"Category"                                                                       inManagedObjectStore:objectManager.objectStore];
+    
     categoryMapping.primaryKeyAttribute = @"categoryID";  
     [categoryMapping mapKeyPath:@"id" toAttribute:@"categoryID"];
     [categoryMapping mapKeyPath:@"title" toAttribute:@"title"];
     [categoryMapping mapKeyPath:@"image" toAttribute:@"image"];
     [categoryMapping mapRelationship:@"models" withMapping:modelMapping];
-    [objectManager.mappingProvider setMapping:categoryMapping forKeyPath:@"category"];
+//    [objectManager.mappingProvider setMapping:categoryMapping forKeyPath:@"category"];
+    
+    [objectManager.mappingProvider registerMapping:categoryMapping withRootKeyPath:@"category"];
+
+    
+    
+    [objectManager.mappingProvider setObjectMapping:categoryMapping forResourcePathPattern:@"json.php" withFetchRequestBlock:^NSFetchRequest *(NSString *resourcePath){
+        
+        return [Category fetchRequest];
+      
+    }];   
     
     // Hydrate the assignedCategory association via primary key
 //    [modelMapping hasOne:@"assignedCategory" withMapping:categoryMapping];

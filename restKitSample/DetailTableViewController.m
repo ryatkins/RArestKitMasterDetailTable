@@ -7,6 +7,7 @@
 //
 
 #import "DetailTableViewController.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface DetailTableViewController ()
 
@@ -91,8 +92,19 @@
     Model* model = [[self.category.models allObjects] objectAtIndex:indexPath.row];
     cell.textLabel.text = model.title;
     
+    NSMutableString* strNew = [[NSMutableString alloc] initWithString:model.image];
+    [strNew setString: [strNew stringByReplacingOccurrencesOfString:@" " withString:@"%20"]];
     
-    // Configure the cell...
+    
+    NSString *path = [[NSString alloc] initWithFormat:@"http://ionreality.com/shimmer/thumbs/%@", strNew];
+    
+    // SDWebImage
+    [cell.imageView setImageWithURL:[NSURL URLWithString:path]
+                   placeholderImage:[UIImage imageNamed:@"placeholder.png"]
+                            success:^(UIImage *image) { NSLog(@"success");  }
+                            failure:^(NSError *error) { NSLog(@"failure"); }];
+
+    [path release];
     
     return cell;
 }

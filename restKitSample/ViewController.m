@@ -25,11 +25,25 @@
     [super dealloc];
 }
 
+- (void) reloadTable
+{
+     NSLog(@"reload");
+    [self loadContact];
+    
+}
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    UIBarButtonItem *reloadButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(reloadTable)] autorelease]; 
+    self.navigationItem.rightBarButtonItem = reloadButton;
+    
+    NSLog(@"viewDidLoad viewController");
+    
+    
       
     [self loadContact];  
 }
@@ -87,17 +101,7 @@
     
 - (void) loadObjectsFromDataStore {
     NSFetchRequest* fetchRequest = [Category fetchRequest];
-    //sort etc
     self.categories = [[Category objectsWithFetchRequest:fetchRequest] retain] ;
-
-    
-//    Category* category = ((Category*)[_categories objectAtIndex:0]);
-//    NSArray* models = [category.models allObjects];
-    
-//    for (Model* model in models) {
-//        NSLog(@"model.id | model.title: %@ | %@", model.modelID, model.title);
-//    }
-//    NSLog(@"done");
     
     [self.tableView reloadData];
 
@@ -121,15 +125,6 @@
 
 - (NSInteger)tableView:(UITableView *)table numberOfRowsInSection:(NSInteger)section {
     return [self.categories count];
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    NSDate* lastUpdatedAt = [[NSUserDefaults standardUserDefaults] objectForKey:@"LastUpdatedAt"];
-    NSString* dateString = [NSDateFormatter localizedStringFromDate:lastUpdatedAt dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterMediumStyle];
-    if (nil == dateString) {
-        dateString = @"Never";
-    }
-    return [NSString stringWithFormat:@"Last Load: %@", dateString];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
