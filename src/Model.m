@@ -13,6 +13,5 @@
 @dynamic modelID;
 @dynamic title;
 @dynamic image;
-@dynamic assignedCategoryID;
 
 @end

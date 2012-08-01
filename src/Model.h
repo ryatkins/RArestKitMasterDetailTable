@@ -15,6 +15,6 @@
 @property (nonatomic, retain) NSNumber* modelID;
 @property (nonatomic, retain) NSString* title;
 @property (nonatomic, retain) NSString* image;
-@property (nonatomic, retain) NSNumber* assignedCategoryID;
+
 
 @end

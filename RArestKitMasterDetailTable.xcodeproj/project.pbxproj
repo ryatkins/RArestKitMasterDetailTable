@@ -27,8 +27,8 @@
 		943FEE9715C07C530089776F /* DetailTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 943FEE9515C07C530089776F /* DetailTableViewController.xib */; };
 		943FEEE115C0A1DE0089776F /* libSDWebImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 943FEEDA15C0A1940089776F /* libSDWebImage.a */; };
 		943FEEE315C0A1EA0089776F /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 943FEEE215C0A1EA0089776F /* ImageIO.framework */; };
-		943FEEF515C1723A0089776F /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 943FEEF315C1723A0089776F /* placeholder.png */; };
-		943FEEF615C1723A0089776F /* placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 943FEEF415C1723A0089776F /* placeholder@2x.png */; };
+		9444053915C714F100EA8965 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 9444053715C714F100EA8965 /* placeholder.png */; };
+		9444053A15C714F100EA8965 /* placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9444053815C714F100EA8965 /* placeholder@2x.png */; };
 		9474E85B15B99C6B00F37D25 /* RKData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9474E85915B99C6B00F37D25 /* RKData.xcdatamodeld */; };
 		9474E86315B9A1FD00F37D25 /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 9474E86215B9A1FD00F37D25 /* Category.m */; };
 		9474E87015B9A8B000F37D25 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 9474E86F15B9A8B000F37D25 /* Model.m */; };
@@ -134,8 +134,8 @@
 		943FEE9515C07C530089776F /* DetailTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailTableViewController.xib; sourceTree = "<group>"; };
 		943FEED015C0A1940089776F /* SDWebImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SDWebImage.xcodeproj; path = SDWebImage/SDWebImage.xcodeproj; sourceTree = "<group>"; };
 		943FEEE215C0A1EA0089776F /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
-		943FEEF315C1723A0089776F /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
-		943FEEF415C1723A0089776F /* placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeholder@2x.png"; sourceTree = "<group>"; };
+		9444053715C714F100EA8965 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
+		9444053815C714F100EA8965 /* placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeholder@2x.png"; sourceTree = "<group>"; };
 		9474E85A15B99C6B00F37D25 /* RKData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RKData.xcdatamodel; sourceTree = "<group>"; };
 		9474E86115B9A1FD00F37D25 /* Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Category.h; sourceTree = "<group>"; };
 		9474E86215B9A1FD00F37D25 /* Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Category.m; sourceTree = "<group>"; };
@@ -170,9 +170,9 @@
 		942938AE15B88D03004BC81E = {
 			isa = PBXGroup;
 			children = (
-				943FEEE415C0A4E20089776F /* Assets */,
+				9444053615C714F100EA8965 /* Assets */,
 				943FEEB815C0A1000089776F /* External */,
-				942938C315B88D04004BC81E /* restKitSample */,
+				942938C315B88D04004BC81E /* src */,
 				942938BC15B88D04004BC81E /* Frameworks */,
 				942938BA15B88D04004BC81E /* Products */,
 			);
@@ -204,7 +204,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		942938C315B88D04004BC81E /* restKitSample */ = {
+		942938C315B88D04004BC81E /* src */ = {
 			isa = PBXGroup;
 			children = (
 				942938CC15B88D04004BC81E /* AppDelegate.h */,
@@ -222,7 +222,7 @@
 				9474E86F15B9A8B000F37D25 /* Model.m */,
 				9474E85915B99C6B00F37D25 /* RKData.xcdatamodeld */,
 			);
-			path = restKitSample;
+			path = src;
 			sourceTree = "<group>";
 		};
 		942938C415B88D04004BC81E /* Supporting Files */ = {
@@ -267,14 +267,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		943FEEE415C0A4E20089776F /* Assets */ = {
+		9444053615C714F100EA8965 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				943FEEF315C1723A0089776F /* placeholder.png */,
-				943FEEF415C1723A0089776F /* placeholder@2x.png */,
+				9444053715C714F100EA8965 /* placeholder.png */,
+				9444053815C714F100EA8965 /* placeholder@2x.png */,
 			);
-			name = Assets;
-			path = restKitSample/Assets;
+			path = Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -402,8 +401,8 @@
 				942938C815B88D04004BC81E /* InfoPlist.strings in Resources */,
 				942938D415B88D04004BC81E /* ViewController.xib in Resources */,
 				943FEE9715C07C530089776F /* DetailTableViewController.xib in Resources */,
-				943FEEF515C1723A0089776F /* placeholder.png in Resources */,
-				943FEEF615C1723A0089776F /* placeholder@2x.png in Resources */,
+				9444053915C714F100EA8965 /* placeholder.png in Resources */,
+				9444053A15C714F100EA8965 /* placeholder@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,13 +505,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "restKitSample/RArestKitMasterDetailTable-Prefix.pch";
+				GCC_PREFIX_HEADER = "src/RArestKitMasterDetailTable-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(BUILT_PRODUCTS_DIR)/../../Headers",
 					"”$(OBJROOT)/UninstalledProducts/include”",
 					"”$(TARGET_BUILD_DIR)/usr/local/lib/include”",
 				);
-				INFOPLIST_FILE = "restKitSample/RArestKitMasterDetailTable-Info.plist";
+				INFOPLIST_FILE = "src/RArestKitMasterDetailTable-Info.plist";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -526,13 +525,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "restKitSample/RArestKitMasterDetailTable-Prefix.pch";
+				GCC_PREFIX_HEADER = "src/RArestKitMasterDetailTable-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(BUILT_PRODUCTS_DIR)/../../Headers",
 					"”$(OBJROOT)/UninstalledProducts/include”",
 					"”$(TARGET_BUILD_DIR)/usr/local/lib/include”",
 				);
-				INFOPLIST_FILE = "restKitSample/RArestKitMasterDetailTable-Info.plist";
+				INFOPLIST_FILE = "src/RArestKitMasterDetailTable-Info.plist";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",

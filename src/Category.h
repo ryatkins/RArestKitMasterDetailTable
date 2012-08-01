@@ -1,6 +1,6 @@
 //
 //  Category.h
-//  restKitSample
+//  
 //
 //  Created by Ryan Atkins on 7/20/12.
 //  Copyright (c) 2012 Ryan Atkins. All rights reserved.

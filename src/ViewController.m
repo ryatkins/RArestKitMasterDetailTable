@@ -28,8 +28,7 @@
 - (void) reloadTable
 {
      NSLog(@"reload");
-    [self loadContact];
-    
+    [self loadDetailItem];
 }
 
 
@@ -45,7 +44,7 @@
     
     
       
-    [self loadContact];  
+    [self loadDetailItem];  
 }
 
 - (void)viewDidUnload
@@ -62,7 +61,7 @@
 #pragma mark -
 #pragma mark RestKit
 
-- (void)loadContact {
+- (void)loadDetailItem {
     
     RKObjectManager* objectManager = [RKObjectManager sharedManager];
     [objectManager loadObjectsAtResourcePath:@"json.php" delegate:self];
